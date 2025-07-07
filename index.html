@@ -279,42 +279,6 @@
             </div>
         </section>
         
-        <!-- Interactive Quiz -->
-        <section class="bg-white rounded-xl p-6 shadow-lg mb-12">
-            <h2 class="text-3xl font-bold mb-6 text-center font-['Baloo 2']">
-                <i class="fas fa-question-circle text-[var(--primary-color)] mr-2"></i>
-                Test Your Knowledge!
-            </h2>
-            
-            <div class="quiz-container max-w-2xl mx-auto">
-                <div class="quiz-question mb-6">
-                    <h3 class="text-xl font-bold mb-4">1. What is the main job of the small intestine?</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button class="quiz-option bg-gray-100 hover:bg-gray-200 py-3 px-4 rounded-lg transition-colors">
-                            A. To pump blood
-                        </button>
-                        <button class="quiz-option bg-gray-100 hover:bg-gray-200 py-3 px-4 rounded-lg transition-colors">
-                            B. To absorb nutrients from food
-                        </button>
-                        <button class="quiz-option bg-gray-100 hover:bg-gray-200 py-3 px-4 rounded-lg transition-colors">
-                            C. To help you breathe
-                        </button>
-                        <button class="quiz-option bg-gray-100 hover:bg-gray-200 py-3 px-4 rounded-lg transition-colors">
-                            D. To digest food with strong acid
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="quiz-feedback hidden p-4 bg-green-100 rounded-lg mb-6">
-                    <p class="text-lg"></p>
-                </div>
-                
-                <button id="checkAnswerBtn" class="bg-[var(--primary-color)] hover:bg-[#e08c12] text-white font-bold py-2 px-6 rounded-full transition-colors block mx-auto">
-                    Check Answer
-                </button>
-            </div>
-        </section>
-        
         <!-- How to Keep It Healthy -->
         <section>
             <h2 class="text-3xl font-bold mb-6 text-center font-['Baloo 2']">
@@ -382,44 +346,6 @@
             funFactElement.classList.remove('hidden');
         });
         
-        // Quiz Answer Checker
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.quiz-option').forEach(btn => {
-                    btn.classList.remove('bg-green-200', 'border-green-500');
-                });
-                
-                this.classList.add('bg-green-200');
-                this.classList.add('border-green-500');
-                this.classList.add('border-2');
-            });
-        });
-        
-        document.getElementById('checkAnswerBtn').addEventListener('click', function() {
-            const selectedOption = document.querySelector('.quiz-option.bg-green-200');
-            const feedback = document.querySelector('.quiz-feedback');
-            
-            if (!selectedOption) {
-                feedback.querySelector('p').textContent = 'Please select an answer first!';
-                feedback.classList.remove('hidden');
-                feedback.classList.remove('bg-green-100');
-                feedback.classList.add('bg-yellow-100');
-                return;
-            }
-            
-            if (selectedOption.textContent.includes('absorb nutrients')) {
-                feedback.querySelector('p').textContent = 'Correct! The small intestine\'s main job is to absorb nutrients from the food you eat. Great job!';
-                feedback.classList.remove('hidden');
-                feedback.classList.remove('bg-yellow-100');
-                feedback.classList.add('bg-green-100');
-            } else {
-                feedback.querySelector('p').textContent = 'Not quite! While the small intestine does help with digestion, its main job is to absorb nutrients. Try again!';
-                feedback.classList.remove('hidden');
-                feedback.classList.remove('bg-green-100');
-                feedback.classList.add('bg-yellow-100');
-            }
-        });
-        
         // Animate the food ball along the path
         setTimeout(() => {
             const path = document.getElementById('journeyPath');
@@ -466,4 +392,3 @@
     </script>
 </body>
 </html>
-
